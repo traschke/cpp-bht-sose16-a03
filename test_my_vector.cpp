@@ -50,6 +50,7 @@ int main()
 
         // in case the vector reserves memory, number of Payload instances it should match
         assert(Payload::count() == v0.capacity());
+        assert(true == v0.empty());
     }
 #if 0
         {

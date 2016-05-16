@@ -34,7 +34,7 @@ namespace my {
         }
 
         bool empty() const noexcept {
-
+            return this->size_ == 0;
         }
 
         size_t size() const noexcept {
