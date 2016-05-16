@@ -10,15 +10,16 @@ namespace my {
     class vector {
     public:
         vector() {
-
+            this->array = new ValueT[0];
         }
 
         vector(size_t n) {
-
+            this->array = new ValueT[n];
         }
 
         vector(size_t n, const ValueT& val) {
-
+            this->array = new ValueT[n];
+            this->push_back(val);
         }
 
         virtual ~vector() {
@@ -75,7 +76,7 @@ namespace my {
         vector(vector<ValueT> const &) = delete;
         vector<ValueT>& operator = (vector<ValueT> const &) = delete;
     private:
-
+        ValueT* array;
     };
 }
 #endif //CPP_BHT_SOSE16_A03_MY_VECTOR_H
