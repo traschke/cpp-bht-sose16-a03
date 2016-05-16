@@ -11,15 +11,22 @@ namespace my {
     public:
         vector() {
             this->array = new ValueT[0];
+            this->size_ = 0;
+            this->capacity_ = 0;
         }
 
         vector(size_t n) {
             this->array = new ValueT[n];
+            this->size_ = 0;
+            this->capacity_ = n;
         }
 
+        //Buggy
         vector(size_t n, const ValueT& val) {
             this->array = new ValueT[n];
             this->push_back(val);
+            this->size_ = 1;
+            this->capacity_ = n;
         }
 
         virtual ~vector() {
@@ -31,11 +38,11 @@ namespace my {
         }
 
         size_t size() const noexcept {
-
+            return this->size_;
         }
 
         size_t capacity() const noexcept {
-
+            return this->capacity_;
         }
 
         void clear() noexcept {
@@ -77,6 +84,8 @@ namespace my {
         vector<ValueT>& operator = (vector<ValueT> const &) = delete;
     private:
         ValueT* array;
+        size_t size_;
+        size_t capacity_;
     };
 }
 #endif //CPP_BHT_SOSE16_A03_MY_VECTOR_H

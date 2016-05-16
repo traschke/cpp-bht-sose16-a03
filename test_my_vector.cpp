@@ -50,7 +50,8 @@ int main()
 
         // in case the vector reserves memory, number of Payload instances it should match
         assert(Payload::count() == v0.capacity());
-
+    }
+#if 0
         {
             // are the elements created?
             vector<Payload> v1(3, Payload(-1,-1,-1));
@@ -207,6 +208,7 @@ int main()
         }
         cout << " done." << endl;
     }
+#endif
 
 #if 0
     {
