@@ -46,7 +46,7 @@ namespace my {
         }
 
         void clear() noexcept {
-
+            this->size_= 0;
         }
 
         void reserve(size_t new_capacity) {
