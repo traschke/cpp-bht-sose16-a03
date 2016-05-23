@@ -23,6 +23,7 @@ namespace my {
 
         //Buggy
         vector(size_t n, const ValueT& val) {
+            this->size_ = 0;
             this->array = new ValueT[n];
             this->capacity_ = n;
             for (int i = 0; i < n; ++i) {
@@ -31,7 +32,7 @@ namespace my {
         }
 
         virtual ~vector() {
-
+            delete[] this->array;
         }
 
         /**
