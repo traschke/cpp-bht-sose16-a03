@@ -88,7 +88,9 @@ namespace my {
          * Dabei soll der reservierte Platz nicht schrumpfen.
          */
         ValueT pop_back() {
-
+            ValueT& temp = this->array[this->size_];
+            this->array[this->size_] = nullptr;
+            return temp;
         }
 
         /**
