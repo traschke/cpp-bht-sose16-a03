@@ -24,9 +24,10 @@ namespace my {
         //Buggy
         vector(size_t n, const ValueT& val) {
             this->array = new ValueT[n];
-            this->push_back(val);
-            this->size_ = 1;
             this->capacity_ = n;
+            for (int i = 0; i < n; ++i) {
+                this->push_back(val);
+            }
         }
 
         virtual ~vector() {
@@ -94,7 +95,13 @@ namespace my {
          * (smart) vergrößert werden.
          */
         void push_back(const ValueT& val) {
-
+            if (this->size_ >= this->capacity_) {
+                reserve(this->capacity_ + 1);
+                this->array[this->capacity_ + 1] = val;
+            } else {
+                this->array[this->size_ + 1] = val;
+            }
+            this->size_++;
         }
 
         /**
