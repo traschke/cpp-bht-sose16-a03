@@ -50,11 +50,25 @@ namespace my {
         }
 
         void reserve(size_t new_capacity) {
-
+            if(new_capacity == this->capacity_)
+                return;
+            ValueT* tempArray = new ValueT[new_capacity];
+            if (new_capacity > size_) {
+                this->capacity_ = new_capacity;
+                for (int i = 0; i < size_; ++i) {
+                    tempArray[i] = this->array[i];
+                }
+            } else {
+                for (int i = 0; i < new_capacity; ++i) {
+                    tempArray[i] = this->array[i];
+                }
+            }
+            delete[] this->array;
+            this->array = tempArray;
         }
 
         void shrink_to_fit() {
-
+            reserve(this->size_);
         }
 
         void push_back(const ValueT& val) {
