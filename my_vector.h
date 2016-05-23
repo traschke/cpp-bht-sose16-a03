@@ -33,22 +33,37 @@ namespace my {
 
         }
 
+        /**
+         * Liefert zurück, ob sich Elemente in dem Array befinden.
+         */
         bool empty() const noexcept {
             return this->size_ == 0;
         }
 
+        /**
+         * Liefert die Anzahl der enthaltenen Elemente zurück
+         */
         size_t size() const noexcept {
             return this->size_;
         }
 
+        /**
+         * Liefert die Anzahl der Elemente zurück, für die insgesamt Platz in dem Array reserviert ist.
+         */
         size_t capacity() const noexcept {
             return this->capacity_;
         }
 
+        /**
+         * Löscht die enthaltenen Elemente und ändert nichts an der Kapazität.
+         */
         void clear() noexcept {
             this->size_= 0;
         }
 
+        /**
+         * Reserviert Platz für mindestens die angegebene Menge von Elementen
+         */
         void reserve(size_t new_capacity) {
             if(new_capacity == this->capacity_)
                 return;
@@ -67,18 +82,33 @@ namespace my {
             this->array = tempArray;
         }
 
+        /**
+         * Reduziert den reservierten Speicherplatz so, dass gerade die aktuell enthaltenen Elemente hinein passen
+         */
         void shrink_to_fit() {
             reserve(this->size_);
         }
 
+        /**
+         * fügt ein neues Element als letztes Element des Arrays ein. Dazu muss der reservierte Platz ggf.
+         * (smart) vergrößert werden.
+         */
         void push_back(const ValueT& val) {
 
         }
 
+        /**
+         * nimmt das letzte Element aus dem Arrays heraus und liefert es zurück.
+         * Dabei soll der reservierte Platz nicht schrumpfen.
+         */
         ValueT pop_back() {
 
         }
 
+        /**
+         * liefert eine Referenz auf das gewünschte Element aus dem Array zurück.
+         * Dies soll sowohl lesend (auch für c onst- Objekte) als auch schreibend möglich sein.
+         */
         ValueT operator[](size_t i) const {
 
         }
@@ -88,7 +118,8 @@ namespace my {
         }
 
         /**
-         * Same as operator[], checks if index is valid, throws std::out_of_bounds if not.
+         * Funktioniert wie der o perator[], prüft jedoch, ob der angegebene Index gültig ist, und wirft eine
+         * aussagekräftige Exception vom Typ std::out_of_bounds wenn nicht.
          */
         ValueT at(size_t i) const {
 
