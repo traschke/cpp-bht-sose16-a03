@@ -24,9 +24,10 @@ namespace my {
         //Buggy
         vector(size_t n, const ValueT& val) {
             this->array = new ValueT[n];
-            this->push_back(val);
-            this->size_ = 1;
             this->capacity_ = n;
+            for (int i = 0; i < n; ++i) {
+                this->push_back(val);
+            }
         }
 
         virtual ~vector() {
@@ -65,14 +66,28 @@ namespace my {
          * Reserviert Platz für mindestens die angegebene Menge von Elementen
          */
         void reserve(size_t new_capacity) {
-
+            if(new_capacity == this->capacity_)
+                return;
+            ValueT* tempArray = new ValueT[new_capacity];
+            if (new_capacity > size_) {
+                this->capacity_ = new_capacity;
+                for (int i = 0; i < size_; ++i) {
+                    tempArray[i] = this->array[i];
+                }
+            } else {
+                for (int i = 0; i < new_capacity; ++i) {
+                    tempArray[i] = this->array[i];
+                }
+            }
+            delete[] this->array;
+            this->array = tempArray;
         }
 
         /**
          * Reduziert den reservierten Speicherplatz so, dass gerade die aktuell enthaltenen Elemente hinein passen
          */
         void shrink_to_fit() {
-
+            reserve(this->size_);
         }
 
         /**
@@ -80,7 +95,13 @@ namespace my {
          * (smart) vergrößert werden.
          */
         void push_back(const ValueT& val) {
-
+            if (this->size_ >= this->capacity_) {
+                reserve(this->capacity_ + 1);
+                this->array[this->capacity_ + 1] = val;
+            } else {
+                this->array[this->size_ + 1] = val;
+            }
+            this->size_++;
         }
 
         /**
