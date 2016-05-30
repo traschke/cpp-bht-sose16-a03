@@ -160,6 +160,7 @@ int main()
         }
         cout << " done." << endl;
     }
+#endif
 
     {
         cout << "at() ... ";
@@ -187,7 +188,7 @@ int main()
         }
         cout << " done." << endl;
     }
-
+#if 0
     {
         cout << "constness... ";
         {
