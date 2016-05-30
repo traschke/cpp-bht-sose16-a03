@@ -111,7 +111,7 @@ int main()
         }
         cout << " done." << endl;
     }
-#if 0
+
     {
         cout << "shrink_to_fit() ... ";
         {
@@ -160,7 +160,6 @@ int main()
         }
         cout << " done." << endl;
     }
-#endif
 
     {
         cout << "at() ... ";
@@ -188,7 +187,7 @@ int main()
         }
         cout << " done." << endl;
     }
-#if 0
+
     {
         cout << "constness... ";
         {
@@ -208,7 +207,6 @@ int main()
         }
         cout << " done." << endl;
     }
-#endif
 
 #if 0
     {

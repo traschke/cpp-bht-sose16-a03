@@ -114,11 +114,11 @@ namespace my {
          * Dies soll sowohl lesend (auch für c onst- Objekte) als auch schreibend möglich sein.
          */
         ValueT operator[](size_t i) const {
-
+            return this->array[i];
         }
 
         ValueT& operator[](size_t i) {
-
+            return this->array[i];
         }
 
         /**
