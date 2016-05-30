@@ -69,7 +69,7 @@ namespace my {
             if(new_capacity == this->capacity_)
                 return;
             ValueT* tempArray = new ValueT[new_capacity];
-            if (new_capacity > size_) {
+            if (new_capacity >= size_) {
                 this->capacity_ = new_capacity;
                 for (int i = 0; i < size_; ++i) {
                     tempArray[i] = this->array[i];
