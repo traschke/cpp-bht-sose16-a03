@@ -64,7 +64,7 @@ int main()
         assert(Payload::count() == 0);
         cout << " done." << endl;
     }
-#if 0
+
     {
         cout << "push_back(), pop_back(), size(), empty() ... ";
         {
@@ -91,7 +91,6 @@ int main()
             assert(v.size() == 0);
             assert(v.empty());
             assert(Payload::count() >= 3); // should not shrink when popping
-
         }
         assert(Payload::count() == 0);
         cout << " done." << endl;
@@ -112,7 +111,7 @@ int main()
         }
         cout << " done." << endl;
     }
-
+#if 0
     {
         cout << "shrink_to_fit() ... ";
         {
