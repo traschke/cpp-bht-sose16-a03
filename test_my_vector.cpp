@@ -50,6 +50,7 @@ int main()
 
         // in case the vector reserves memory, number of Payload instances it should match
         assert(Payload::count() == v0.capacity());
+        assert(true == v0.empty());
 
         {
             // are the elements created?
@@ -90,7 +91,6 @@ int main()
             assert(v.size() == 0);
             assert(v.empty());
             assert(Payload::count() >= 3); // should not shrink when popping
-
         }
         assert(Payload::count() == 0);
         cout << " done." << endl;
