@@ -111,7 +111,7 @@ namespace my {
          */
         ValueT pop_back() {
             ValueT& temp = this->array[this->size_];
-            this->array[this->size_] = nullptr;
+            this->size_--;
             return temp;
         }
 
