@@ -95,13 +95,10 @@ namespace my {
          * (smart) vergrößert werden.
          */
         void push_back(const ValueT& val) {
-            if (this->size_ >= this->capacity_) {
+            if (this->size_ == this->capacity_) {
                 reserve(this->capacity_ + 1);
-                this->array[this->capacity_ + 1] = val;
-            } else {
-                this->array[this->size_ + 1] = val;
             }
-            this->size_++;
+            this->array[this->size_++] = val;
         }
 
         /**
@@ -109,7 +106,7 @@ namespace my {
          * Dabei soll der reservierte Platz nicht schrumpfen.
          */
         ValueT pop_back() {
-
+            return this->array[--this->size_];
         }
 
         /**
