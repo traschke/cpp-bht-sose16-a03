@@ -130,7 +130,11 @@ namespace my {
          * aussagekräftige Exception vom Typ std::out_of_bounds wenn nicht.
          */
         ValueT at(size_t i) const {
-
+            if (i > this->size_ || i < 0) {
+                throw std::out_of_range("Undefined index.");
+            } else {
+                return this->array[i];
+            }
         }
 
         vector(vector<ValueT> const &) = delete;
