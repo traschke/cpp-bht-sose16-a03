@@ -161,8 +161,8 @@ namespace my {
             }
         }
 
-        vector(vector<ValueT> const &) = delete;
-        vector<ValueT>& operator = (vector<ValueT> const &) = delete;
+        // vector(vector<ValueT> const &) = delete;
+        // vector<ValueT>& operator = (vector<ValueT> const &) = delete;
     private:
         ValueT* array;
         size_t size_;
