@@ -30,6 +30,26 @@ namespace my {
             }
         }
 
+        /**
+         * Copy-Constructor
+         */
+        vector(const vector& rhs){
+            this->array = new ValueT(*rhs.array);
+            this->size_ = rhs.size_;
+            this->capacity_ = rhs.capacity_;
+        }
+
+        /**
+         * Copy-Assignment
+         */
+        vector& operator= (const vector& rhs) {
+            if (this->array != &rhs.array) {
+                delete[] this->array;
+                this->array = new ValueT(*rhs.array);
+            }
+            return *this->array;
+        }
+
         virtual ~vector() {
             delete[] this->array;
         }
@@ -122,7 +142,7 @@ namespace my {
         }
 
         /**
-         * Funktioniert wie der o perator[], prüft jedoch, ob der angegebene Index gültig ist, und wirft eine
+         * Funktioniert wie der operator[], prüft jedoch, ob der angegebene Index gültig ist, und wirft eine
          * aussagekräftige Exception vom Typ std::out_of_bounds wenn nicht.
          */
         ValueT at(size_t i) const {
@@ -141,8 +161,8 @@ namespace my {
             }
         }
 
-        vector(vector<ValueT> const &) = delete;
-        vector<ValueT>& operator = (vector<ValueT> const &) = delete;
+        // vector(vector<ValueT> const &) = delete;
+        // vector<ValueT>& operator = (vector<ValueT> const &) = delete;
     private:
         ValueT* array;
         size_t size_;
