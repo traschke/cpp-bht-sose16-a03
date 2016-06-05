@@ -216,6 +216,46 @@ int main()
     }
 #endif
 
+    cout << "End of test of exercise 3.1" << endl;
+    cout << "Begin of test of exercise 3.2\n"
+                    "Starting tests for copy-constructor & copy-assignment..." << endl;
+    {
+        cout << "copy-constructor & copy-assignment...";
+        {
+            vector<Payload> v0(2, Payload(-1, -1, -1));
+            cout << v0.at(0).x << endl;
+            cout << v0.at(0).y << endl;
+            cout << v0.at(0).z << endl;
+
+            cout << v0.at(1).x << endl;
+            cout << v0.at(1).y << endl;
+            cout << v0.at(1).z << endl;
+            vector<Payload> v1;
+            v1 = v0;
+
+            {
+                // are the elements created?
+                assert(v0.size() == 2);
+                assert(v0.capacity() == 2);
+            }
+
+            // now test if v1 changes if I change v0. Wished is that it doesn't change.
+            // are the elements created?
+            assert(v0.size() == v1.size());
+            assert(v0.capacity() == v1.capacity());
+            // Add loop, so the vector could have as many items as wished.
+            for (int i = 0; i < v0.size(); ++i) {
+                cout << v0.at(i).x << " == " << v1.at(i).x << endl;
+                cout << v0.at(i).y << " == " << v1.at(i).y << endl;
+                cout << v0.at(i).z << " == " << v1.at(i).z << endl;
+                assert(v0.at(i).x == v1.at(i).x);
+                assert(v0.at(i).y == v1.at(i).y);
+                assert(v0.at(i).z == v1.at(i).z);
+            }
+        }
+    }
+
+
     cout << "End of tests --------------------" << endl;
 
     return 0;

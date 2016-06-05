@@ -33,21 +33,28 @@ namespace my {
         /**
          * Copy-Constructor
          */
-        vector(const vector& rhs){
-            this->array = new ValueT(*rhs.array);
-            this->size_ = rhs.size_;
-            this->capacity_ = rhs.capacity_;
+        vector(const vector& rhs)
+                : size_(rhs.size_),
+                  capacity_(rhs.capacity_)
+        {
+            array = new ValueT[capacity_];
+            for (int i = 0; i < capacity_; ++i) {
+                array[i] = rhs.array[i];
+            }
         }
 
         /**
          * Copy-Assignment
          */
         vector& operator= (const vector& rhs) {
-            if (this->array != &rhs.array) {
-                delete[] this->array;
-                this->array = new ValueT(*rhs.array);
+            this->size_ = rhs.size_;
+            this->capacity_ = rhs.capacity_;
+            delete[] array;
+            array = new ValueT[capacity_];
+            for (int i = 0; i < capacity_; ++i) {
+                array[i] = rhs.array[i];
             }
-            return *this->array;
+            return *this;
         }
 
         virtual ~vector() {
