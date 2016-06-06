@@ -253,7 +253,8 @@ int main()
                 assert(v0.at(i).z == v1.at(i).z);
             }
         }
-
+    }
+#if 0
         cout << "move-constructor & move-assignment...";
         {
             vector<Payload> v2;
@@ -273,7 +274,7 @@ int main()
             }
         }
     }
-
+#endif
 
     cout << "End of tests --------------------" << endl;
 
