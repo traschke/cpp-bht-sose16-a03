@@ -5,6 +5,9 @@
 #ifndef CPP_BHT_SOSE16_A03_MY_VECTOR_H
 #define CPP_BHT_SOSE16_A03_MY_VECTOR_H
 
+#include <stdexcept>
+#include <iostream>
+
 namespace my {
     template <typename ValueT>
     class vector {
@@ -44,6 +47,14 @@ namespace my {
         }
 
         /**
+         * Move-Constructor
+         */
+        vector(vector&& rhs) {
+            this->array = rhs.array;
+            rhs.array = nullptr;
+        }
+
+        /**
          * Copy-Assignment
          */
         vector& operator= (const vector& rhs) {
@@ -54,6 +65,16 @@ namespace my {
             for (int i = 0; i < capacity_; ++i) {
                 array[i] = rhs.array[i];
             }
+            std::cout << "moved assignment" << std::endl;
+            return *this;
+        }
+
+        /**
+         * Move-Assignment
+         */
+        vector& operator= (vector&& rhs) {
+            std::swap(*this, rhs);
+            std::cout << "moved assignment" << std::endl;
             return *this;
         }
 
@@ -123,7 +144,7 @@ namespace my {
          */
         void push_back(const ValueT& val) {
             if (this->size_ == this->capacity_) {
-                reserve(this->capacity_ + 1);
+                reserve((this->capacity_ + 1) * 2);
             }
             this->array[this->size_++] = val;
         }
@@ -153,7 +174,7 @@ namespace my {
          * aussagekräftige Exception vom Typ std::out_of_bounds wenn nicht.
          */
         ValueT at(size_t i) const {
-            if (i > (this->size_ - 1) || i < 0) {
+            if (i > (this->size_ - 1)) {
                 throw std::out_of_range("Undefined index.");
             } else {
                 return this->array[i];
@@ -161,7 +182,7 @@ namespace my {
         }
 
         ValueT& at(size_t i) {
-            if (i > (this->size_ - 1) || i < 0) {
+            if (i > (this->size_ - 1)) {
                 throw std::out_of_range("Undefined index.");
             } else {
                 return this->array[i];

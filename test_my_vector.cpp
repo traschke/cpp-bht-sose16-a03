@@ -253,6 +253,25 @@ int main()
                 assert(v0.at(i).z == v1.at(i).z);
             }
         }
+
+        cout << "move-constructor & move-assignment...";
+        {
+            vector<Payload> v2;
+            {
+                vector<Payload> v0(2, Payload(-1, -1, -1));
+                v2 = v0;
+                {
+                    // are the elements created?
+                    assert(v0.size() == 2);
+                    assert(v0.capacity() == 2);
+                    // are the elements created?
+                    assert(v2.size() == 2);
+                    assert(v2.capacity() == 2);
+                }
+                // Try to move vectors now
+                v2 = std::move(v0);
+            }
+        }
     }
 
 
